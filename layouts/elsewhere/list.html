@@ -1,0 +1,20 @@
+{{ define "main" }}
+<main>
+  <article>
+    <div class="post-container">
+      <div class="post-content">
+        <h1 class="title">{{ .Title }}</h1>
+        {{- with .Content }}<div class="page-intro">{{ . }}</div>{{ end }}
+        {{- $paginator := .Paginate (.Pages.ByDate.Reverse) }}
+        {{- range $paginator.Pages }}
+        <div class="elsewhere-entry">
+          <h2 class="title"><span class="meta">{{ dateFormat "2006 Jan 02" .Date }} -</span> <a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="meta"> - {{ with .Params.tags }}{{ delimit . " " }} {{- end }} {{- if .Params.extra_link }} - <a href="{{ .Params.extra_link }}">{{ with .Params.extra_link_text }}{{ . }}{{ else }}Link{{ end }}</a>{{ end }}</span></h2>
+          <div class="body">{{ .Content }}</div>
+        </div>
+        {{- end }}
+        {{ partial "paginator.html" . }}
+      </div>
+    </div>
+  </article>
+</main>
+{{ end }}

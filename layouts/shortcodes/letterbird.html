@@ -1,0 +1,8 @@
+{{- $username := .Get "username" | default (.Site.Params.letterbirdUsername) -}}
+{{- $subject := .Get "subject" -}}
+{{- $showheader := .Get "showheader" | default "false" -}}
+<script
+  src="https://letterbird.co/{{ $username }}/embed.js"
+  {{ with $subject }}data-subject="{{ . }}"{{ end }}
+  data-showheader="{{ $showheader }}"
+  async></script>
