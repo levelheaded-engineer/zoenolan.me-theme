@@ -2,7 +2,7 @@
 {{- $subject := .Get "subject" -}}
 {{- $showheader := .Get "showheader" | default "false" -}}
 <script
-  src="https://letterbird.co/{{ $username }}/embed.js"
+  src="https://letterbird.co/embed/v1.js"
+  data-letterbirduser="{{ $username }}"
   {{ with $subject }}data-subject="{{ . }}"{{ end }}
-  data-showheader="{{ $showheader }}"
-  async></script>
+  data-showheader="{{ $showheader }}"></script>
