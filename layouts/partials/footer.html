@@ -1,9 +1,9 @@
 <footer>
   <div class="footer-info">
-    © {{ partialCached "roman-year" . }} {{ with .Site.Copyright }}{{ . }} | {{ end }}<a
-      href="https://github.com/levelheaded-engineer/zoenolan.me-theme">zoenolan.me theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+    © {{ partialCached "roman-year" . }} {{ with .Site.Copyright }}{{ . }}{{ end }}
   </div>
-  <div style="display:flex">
+  <div class="footer-social">
+    <a class="border"></a>
     {{- range $index, $key := .Site.Params.Social -}}
     {{- if hasPrefix $key.icon "simple:" -}}
     <a class="soc" href="{{ $key.url }}" rel="me" title="{{ $key.name }}"><i class="si si-{{ substr $key.icon 7 }}"></i></a>
@@ -12,6 +12,9 @@
     {{- end -}}
     <a class="border"></a>
     {{- end -}}
+  </div>
+  <div class="footer-info">
+    <a href="https://github.com/levelheaded-engineer/zoenolan.me-theme">zoenolan.me theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
   </div>
 </footer>
 {{ if not hugo.IsServer }}
