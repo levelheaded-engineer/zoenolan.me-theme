@@ -302,13 +302,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-h1::before { color: var(--color-primary, #dc143c); content: '# '; }
-h2::before { color: var(--color-primary, #dc143c); content: '## '; }
-h3::before { color: var(--color-primary, #dc143c); content: '### '; }
-h4::before { color: var(--color-primary, #dc143c); content: '#### '; }
-h5::before { color: var(--color-primary, #dc143c); content: '##### '; }
-h6::before { color: var(--color-primary, #dc143c); content: '###### '; }
-
 .meta {
   color: var(--color-text-meta, #999999);
   letter-spacing: -0.5px;
