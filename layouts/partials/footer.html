@@ -14,7 +14,9 @@
     {{- end -}}
   </div>
   <div class="footer-info">
-    <a href="https://github.com/levelheaded-engineer/zoenolan.me-theme">zoenolan.me theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+    {{- with .Site.GetPage "/colophon" -}}
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{- end -}}
   </div>
 </footer>
 {{ if not hugo.IsServer }}
