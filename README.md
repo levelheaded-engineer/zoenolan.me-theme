@@ -1,11 +1,11 @@
-# Archie - Hugo theme
-Archie is a minimal and clean theme for hugo with a markdown-ish UI.
+# zoenolan.me theme - Hugo theme
+A minimal and clean theme for Hugo with a markdown-ish UI, used by
+[zoenolan.me](https://www.zoenolan.me).
 
-Forked from [Ezhil Theme](https://github.com/vividvilla/ezhil)
-
-## Demo
-
-[Check the Demo](https://athul.github.io/archie/) hosted on GitHub Pages :smile: . You can find the source code to that in the `site` branch of this repository
+Forked from [Archie](https://github.com/athul/archie), which is itself forked from
+[Ezhil](https://github.com/vividvilla/ezhil). See
+[Differences from Archie](#differences-from-archie) for what has changed since the fork; everything
+else below is inherited and still applies.
 
 ![](/images/theme.png)
 ![](/images/archie-dark.png)
@@ -20,15 +20,18 @@ Forked from [Ezhil Theme](https://github.com/vividvilla/ezhil)
 - Table of contents
 - Cache busting for CSS files
 - Disqus Comments
+- Three-column footer with social icons, Roman-numeral copyright year and a colophon link
+- Letterbird contact-form shortcode
+- `elsewhere` section layouts with RSS
 
 ## Installation
-In your Hugo website directory, create a new folder named theme and clone the repo
+In your Hugo website directory, create a new folder named themes and clone the repo
 ```bash
 $ mkdir themes
 $ cd themes
-$ git clone https://github.com/athul/archie.git
+$ git clone https://github.com/levelheaded-engineer/zoenolan.me-theme.git
 ```
-Edit the `config.toml` file with `theme="archie"`
+Edit the `hugo.toml` file with `theme="zoenolan.me-theme"`
 For more information read the official [setup guide](https://gohugo.io/installation/) of Hugo.
 
 If you encounter any issues with Google Analytics, update Hugo to v0.125.0 or
@@ -49,8 +52,70 @@ toc: true/false (optional)
 ```
 
 ## Credits
-Forked from [Ezhil Theme](https://github.com/vividvilla/ezhil) and Licensed under MIT License
+Forked from [Archie](https://github.com/athul/archie) by Athul Cyriac Ajay, which was forked from
+[Ezhil Theme](https://github.com/vividvilla/ezhil). Licensed under MIT License.
 Inspired by design of blog.jse.li
+
+----
+
+## Differences from Archie
+
+### Footer
+
+The footer is a three-column layout: copyright on the left, social icons in the middle, colophon link
+on the right.
+
+The copyright year is rendered in Roman numerals, in `© YEAR name` order, taking the name from the
+site's `copyright` config value.
+
+The right column links to a colophon page if one exists. Create `content/colophon/index.md` and the
+link appears automatically, using that page's title; with no such page the column stays empty.
+
+```yaml
+---
+title: "Colophon"
+hideDate: true
+---
+```
+
+### Letterbird shortcode
+
+Embeds a [Letterbird](https://letterbird.co) contact form. The username falls back to
+`params.letterbirdUsername`, so pages can usually call the shortcode bare.
+
+```toml
+[params]
+  letterbirdUsername = "yourusername"
+```
+
+```markdown
+{{< letterbird >}}
+{{< letterbird username="someoneelse" subject="Hello" showheader="true" >}}
+```
+
+### `hideDate` front matter
+
+Suppresses the "Posted on" line on a single page — useful for pages like Contact or CV that are not
+dated posts.
+
+```yaml
+---
+title: "Contact"
+hideDate: true
+---
+```
+
+### `elsewhere` section
+
+Layouts for an `elsewhere` section that lists dated, tagged entries with their content inline rather
+than linking out to full pages, plus a matching RSS output. Entries support `extra_link` and
+`extra_link_text` front matter for an additional link in the entry heading.
+
+### Other changes
+
+- The home page renders its own content directly instead of a paginated post list.
+- The paginator shows an "X of Y" page count between the prev/next links.
+- Heading hash marks (`#`, `##`) are no longer prepended to headings.
 
 ----
 
@@ -135,14 +200,14 @@ The generated search page indexes the same content surface as the home page when
 `params.mainSections` is set. Otherwise it falls back to all regular pages,
 excluding hidden content and the search page itself.
 
-## Config of the Demo Site
+## Example Config
 
 ```toml
-baseURL = "https://athul.github.io/archie/"
+baseURL = "https://www.example.com"
 languageCode = "en-us"
-title = "Archie"
-theme="archie"
-copyright = "© Athul"
+title = "Your Site"
+theme="zoenolan.me-theme"
+copyright = "Your Name" # rendered as "© MMXXVI Your Name" — don't include the © yourself
 # Code Highlight
 pygmentsstyle = "monokai"
 pygmentscodefences = true
@@ -156,7 +221,8 @@ disqusShortname = "yourDisqusShortname"
 [params]
 	mode="auto" # color-mode → light,dark,toggle or auto
 	useCDN=false # don't use CDNs for fonts and icons, instead serve them locally.
-	subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/athul/archie)"
+	subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/levelheaded-engineer/zoenolan.me-theme)"
+	letterbirdUsername = "yourusername" # default user for the letterbird shortcode
 	mathjax = true # enable MathJax support
 	katex = true # enable KaTeX support
 
@@ -201,6 +267,7 @@ weight = 4
 ```
 ---
 
-If you liked my work please consider supporting me on [BuymeACoffee](https://www.buymeacoffee.com/athulca)
+Archie, the theme this one is forked from, is the work of Athul Cyriac Ajay — if you like it please
+consider supporting them on [BuymeACoffee](https://www.buymeacoffee.com/athulca)
 
 <a href="https://www.buymeacoffee.com/athulca" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" height="41" width="174" ></a>
