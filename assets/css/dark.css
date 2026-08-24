@@ -60,14 +60,17 @@ h6::before { color: var(--color-primary-dark, #50fa7b); }
 
 /* Links */
 a {
-  border-block-end: 3px solid var(--color-primary-dark, #50fa7b);
+  border-block-end: 1px solid var(--color-primary-dark, #50fa7b);
   color: inherit;
 }
 
-a:hover,
+a:hover {
+  background-color: var(--color-primary-tint-dark, #274133);
+  border-block-end-color: var(--color-primary-hover-dark, #3dd458);
+}
+
 a:focus {
-  background-color: var(--color-primary-dark, #50fa7b);
-  color: #000000;
+  background-color: var(--color-primary-tint-dark, #274133);
   outline-color: var(--color-primary-dark, #50fa7b);
 }
 
@@ -77,18 +80,17 @@ a:focus {
 
 .site-description a:hover,
 .site-description a:focus {
-  color: #000000;
+  color: var(--color-text-dark, #ffffff);
 }
 
 /* Tags */
 .tags a {
-  border-block-end: 3px solid var(--color-primary-dark, #50fa7b);
+  border-block-end: 1px solid var(--color-primary-dark, #50fa7b);
 }
 
 .tags a:hover,
 .tags a:focus {
-  background-color: var(--color-primary-dark, #50fa7b);
-  color: #000000;
+  background-color: var(--color-primary-tint-dark, #274133);
 }
 
 .site-title a {
@@ -107,7 +109,7 @@ footer {
 
 .soc:hover,
 .soc:focus {
-  color: #000000;
+  color: var(--color-primary-dark, #50fa7b);
   outline-color: var(--color-primary-dark, #50fa7b);
 }
 
